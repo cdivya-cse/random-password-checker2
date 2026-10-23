@@ -8,9 +8,8 @@
 // Dynamically determine backend base URL.
 // If served from Java server, origin is http://localhost:8080.
 // If opened via VS Code Live Server (e.g. port 5500), points to Java server on port 8080.
-const API_BASE_URL = (window.location.port === "8080" || window.location.protocol === "file:")
-    ? ""
-    : "http://localhost:8080";
+
+const API_BASE_URL = "https://securepass-backensecurepass-java-api.onrender.com";
 
 // DOM Elements - Password Checker
 const passwordInput = document.getElementById("passwordInput");
