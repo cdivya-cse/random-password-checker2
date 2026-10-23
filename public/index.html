@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecurePass — Random Password Checker & Generator (Java OOP)</title>
+    <meta name="description" content="A college engineering mini-project showcasing Java OOP concepts with a modern cybersecurity password checker and cryptographically secure generator.">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <div class="brand-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <circle cx="12" cy="11" r="2"/>
+                        <path d="m12 13v3"/>
+                    </svg>
+                </div>
+                <span class="brand-title">Secure<span class="brand-gradient">Pass</span></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#checker-section" class="nav-link">Password Checker</a>
+                <a href="#generator-section" class="nav-link">Password Generator</a>
+                <a href="#workflow-section" class="nav-link">How It Works</a>
+                <a href="#tips-section" class="nav-link">Security Tips</a>
+                <a href="#oop-section" class="nav-link">Java OOP Hub</a>
+            </nav>
+
+            <div class="nav-badges">
+                <div class="status-badge" id="backendStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Java OOP Core</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span>PASSWORD SECURITY TOOL</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Your Password.<br>
+                        <span class="hero-gradient-text">Your Security.</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Test your password strength and generate powerful passwords in seconds.
+                        Engineered with Object-Oriented Java, cryptographic SecureRandom, and real-time entropy scoring.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#generator-section" class="btn btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                            </svg>
+                            Generate Secure Password
+                        </a>
+                        <a href="#checker-section" class="btn btn-secondary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                            Check Password Strength
+                        </a>
+                    </div>
+
+                    <div class="hero-features">
+                        <div class="hero-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Zero Logging & Client-Side Privacy</span>
+                        </div>
+                        <div class="hero-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Java SecureRandom CSPRNG</span>
+                        </div>
+                        <div class="hero-feature-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Pure Java OOP Heuristic Engine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Interactive Simulation Card -->
+                <div class="hero-visual">
+                    <div class="crypt-vault-card">
+                        <div class="vault-card-header">
+                            <div class="vault-title-wrap">
+                                <div class="vault-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                        <circle cx="7.5" cy="15.5" r="5.5"/>
+                                        <path d="m21 2-9.6 9.6"/>
+                                        <path d="m15.5 7.5 3 3L22 7l-3-3"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="vault-title">Cryptographic Vault</h3>
+                                    <span class="vault-subtitle">Live Strength Simulation</span>
+                                </div>
+                            </div>
+                            <span class="vault-score-badge">98/100</span>
+                        </div>
+
+                        <div class="vault-passkey-box">
+                            <span class="passkey-label">SIMULATED PASSKEY</span>
+                            <div class="passkey-value" id="heroSimPass">K9#mQ2$vP8!wZ4*t</div>
+                        </div>
+
+                        <div class="vault-meter-section">
+                            <div class="meter-labels">
+                                <span class="meter-title">Brute Force Resistance</span>
+                                <span class="meter-status" style="color: #10b981;">Very Strong</span>
+                            </div>
+                            <div class="vault-progress-track">
+                                <div class="vault-progress-fill" style="width: 98%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="vault-metrics-grid">
+                            <div class="vault-metric">
+                                <span class="metric-name">Shannon Entropy</span>
+                                <span class="metric-value">92.4 bits</span>
+                            </div>
+                            <div class="vault-metric">
+                                <span class="metric-name">Est. Crack Time</span>
+                                <span class="metric-value text-emerald">Millions of years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow Section: How It Works -->
+        <section id="workflow-section" class="workflow-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-kicker">WORKFLOW</span>
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-subtitle">A seamless bridge between modern web frontend and robust Java Object-Oriented backend.</p>
+                </div>
+
+                <div class="workflow-grid">
+                    <div class="workflow-card">
+                        <div class="workflow-top">
+                            <div class="workflow-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20h9"/>
+                                    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                                </svg>
+                            </div>
+                            <span class="workflow-step-num">01</span>
+                        </div>
+                        <h3 class="workflow-card-title">Enter Your Password</h3>
+                        <p class="workflow-card-desc">
+                            Type or paste your candidate password. The frontend captures user input and sends a clean JSON payload to the Java backend via HTTP POST.
+                        </p>
+                    </div>
+
+                    <div class="workflow-card">
+                        <div class="workflow-top">
+                            <div class="workflow-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect width="18" height="18" x="3" y="3" rx="2"/>
+                                    <path d="m9 9 6 6m0-6-6 6"/>
+                                </svg>
+                            </div>
+                            <span class="workflow-step-num">02</span>
+                        </div>
+                        <h3 class="workflow-card-title">Analyze Strength</h3>
+                        <p class="workflow-card-desc">
+                            Java <code class="code-pill">PasswordChecker</code> executes polymorphic rules, computes Shannon information entropy, and penalizes repetitive dictionary patterns.
+                        </p>
+                    </div>
+
+                    <div class="workflow-card">
+                        <div class="workflow-top">
+                            <div class="workflow-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <span class="workflow-step-num">03</span>
+                        </div>
+                        <h3 class="workflow-card-title">Improve Security</h3>
+                        <p class="workflow-card-desc">
+                            Review granular checklist items and actionable suggestions, or generate high-entropy credentials backed by <code class="code-pill">SecureRandom</code> CSPRNG.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Workbench: Checker & Generator -->
+        <section class="workbench-section">
+            <div class="section-container">
+                <div class="workbench-grid">
+                    
+                    <!-- Password Checker Card -->
+                    <div id="checker-section" class="card workbench-card">
+                        <div class="card-header">
+                            <div class="card-header-icon blue-glow">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="card-title">Test Your Password</h2>
+                                <p class="card-subtitle">Analyzed via Java OOP rules engine, Shannon entropy, and character pool checks.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passwordInput" class="form-label">PASSWORD INPUT</label>
+                            <div class="input-wrapper">
+                                <input type="password" id="passwordInput" class="form-input" placeholder="Type password to evaluate..." autocomplete="off">
+                                <button type="button" id="togglePasswordBtn" class="input-icon-btn" title="Show / Hide Password">
+                                    <svg id="eyeOpenIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                    <svg id="eyeClosedIcon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="m9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                        <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                        <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                        <line x1="2" x2="22" y1="2" y2="22"/>
+                                    </svg>
+                                </button>
+                                <button type="button" id="clearPasswordBtn" class="input-icon-btn" title="Clear input">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"/>
+                                        <line x1="6" y1="6" x2="18" y2="18"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="button" id="analyzeBtn" class="btn btn-primary btn-block">
+                            <span class="btn-spinner hidden" id="checkerSpinner"></span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                            Analyze Password
+                        </button>
+
+                        <!-- Dynamic Checker Results Display -->
+                        <div id="checkerResults" class="checker-results-empty">
+                            <div class="empty-state-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                                </svg>
+                            </div>
+                            <p>Type any password or generate one above to trigger real-time Java analysis.</p>
+                        </div>
+
+                        <div id="checkerResultsActive" class="checker-results hidden">
+                            <!-- Strength Meter Bar -->
+                            <div class="meter-block">
+                                <div class="meter-header">
+                                    <span class="meter-name">STRENGTH LEVEL</span>
+                                    <div class="meter-status-pill" id="strengthPill">
+                                        <span id="strengthText">Medium</span>
+                                        <span class="meter-score-tag" id="scoreTag">65/100</span>
+                                    </div>
+                                </div>
+                                <div class="meter-bar-track">
+                                    <div class="meter-bar-fill" id="meterFill" style="width: 0%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Entropy and Crack Time -->
+                            <div class="analysis-stats-grid">
+                                <div class="stat-card">
+                                    <span class="stat-label">Shannon Entropy</span>
+                                    <span class="stat-value" id="statEntropy">0 bits</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-label">Est. Crack Time</span>
+                                    <span class="stat-value" id="statCrackTime">Instant</span>
+                                </div>
+                            </div>
+
+                            <!-- Rules Checklist -->
+                            <div class="rules-checklist">
+                                <span class="checklist-header">REQUIREMENTS CHECKLIST</span>
+                                <div class="checklist-items">
+                                    <div class="checklist-item" id="reqLength">
+                                        <span class="chk-icon"></span>
+                                        <span class="chk-label">At least 8 characters (12+ recommended)</span>
+                                    </div>
+                                    <div class="checklist-item" id="reqUpper">
+                                        <span class="chk-icon"></span>
+                                        <span class="chk-label">Uppercase letter (A-Z)</span>
+                                    </div>
+                                    <div class="checklist-item" id="reqLower">
+                                        <span class="chk-icon"></span>
+                                        <span class="chk-label">Lowercase letter (a-z)</span>
+                                    </div>
+                                    <div class="checklist-item" id="reqDigit">
+                                        <span class="chk-icon"></span>
+                                        <span class="chk-label">Numeric digit (0-9)</span>
+                                    </div>
+                                    <div class="checklist-item" id="reqSpecial">
+                                        <span class="chk-icon"></span>
+                                        <span class="chk-label">Special character (!@#$%^&*...)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Suggestions Box -->
+                            <div class="suggestions-box" id="suggestionsBox">
+                                <div class="suggestions-header">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                                        <path d="M9 18h6"/>
+                                        <path d="M10 22h4"/>
+                                    </svg>
+                                    <span>Improvement Recommendations</span>
+                                </div>
+                                <ul class="suggestions-list" id="suggestionsList">
+                                    <!-- Populated via script.js -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Password Generator Card -->
+                    <div id="generator-section" class="card workbench-card">
+                        <div class="card-header">
+                            <div class="card-header-icon purple-glow">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="card-title">Create a Strong Password</h2>
+                                <p class="card-subtitle">Generated via Java SecureRandom and Fisher-Yates shuffle.</p>
+                            </div>
+                        </div>
+
+                        <!-- Generated Output Area -->
+                        <div class="form-group">
+                            <label class="form-label">GENERATED OUTPUT</label>
+                            <div class="output-wrapper">
+                                <div class="generated-password-display" id="generatedPasswordDisplay">
+                                    Click Generate to create
+                                </div>
+                                <div class="output-actions">
+                                    <button type="button" id="copyPasswordBtn" class="output-action-btn" title="Copy to clipboard">
+                                        <svg id="copyIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                        </svg>
+                                        <span id="copiedToast" class="copied-toast hidden">Copied!</span>
+                                    </button>
+                                    <button type="button" id="quickRegenBtn" class="output-action-btn" title="Regenerate Password">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                                            <path d="M3 3v5h5"/>
+                                            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+                                            <path d="M16 21h5v-5"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Generator Quick Strength Badge -->
+                        <div class="generator-strength-bar">
+                            <div class="gen-strength-left">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Strength: <strong id="genStrengthText" style="color:#10b981;">Very Strong</strong> <span id="genScoreText">(100/100)</span></span>
+                            </div>
+                            <button type="button" id="testInCheckerBtn" class="link-btn">
+                                Test in Checker &rarr;
+                            </button>
+                        </div>
+
+                        <!-- Length Slider -->
+                        <div class="slider-control-group">
+                            <div class="slider-header">
+                                <span class="control-label">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                                    PASSWORD LENGTH
+                                </span>
+                                <span class="slider-value-badge" id="lengthDisplay">16 characters</span>
+                            </div>
+                            <input type="range" id="lengthSlider" min="8" max="32" value="16" class="range-slider">
+                            <div class="slider-ticks">
+                                <span>8 chars (Min)</span>
+                                <span>16 chars (Recommended)</span>
+                                <span>32 chars (Max)</span>
+                            </div>
+                        </div>
+
+                        <!-- Character Pool Options -->
+                        <div class="options-control-group">
+                            <span class="control-label">CHARACTER POOLS</span>
+                            <div class="options-grid">
+                                <label class="checkbox-card" for="optUpper">
+                                    <input type="checkbox" id="optUpper" checked>
+                                    <span class="chk-box-custom"></span>
+                                    <div class="chk-text">
+                                        <span class="chk-title">Uppercase Letters</span>
+                                        <span class="chk-example">A-Z</span>
+                                    </div>
+                                </label>
+
+                                <label class="checkbox-card" for="optLower">
+                                    <input type="checkbox" id="optLower" checked>
+                                    <span class="chk-box-custom"></span>
+                                    <div class="chk-text">
+                                        <span class="chk-title">Lowercase Letters</span>
+                                        <span class="chk-example">a-z</span>
+                                    </div>
+                                </label>
+
+                                <label class="checkbox-card" for="optDigits">
+                                    <input type="checkbox" id="optDigits" checked>
+                                    <span class="chk-box-custom"></span>
+                                    <div class="chk-text">
+                                        <span class="chk-title">Numeric Digits</span>
+                                        <span class="chk-example">0-9</span>
+                                    </div>
+                                </label>
+
+                                <label class="checkbox-card" for="optSpecial">
+                                    <input type="checkbox" id="optSpecial" checked>
+                                    <span class="chk-box-custom"></span>
+                                    <div class="chk-text">
+                                        <span class="chk-title">Special Symbols</span>
+                                        <span class="chk-example">!@#$%</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Generate Button -->
+                        <button type="button" id="generateBtn" class="btn btn-purple btn-block">
+                            <span class="btn-spinner hidden" id="genSpinner"></span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                            </svg>
+                            Generate Secure Password
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Java OOP Hub Section (Detailed Academic & Mini-Project Showcase) -->
+        <section id="oop-section" class="oop-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-kicker">ACADEMIC FOUNDATION</span>
+                    <h2 class="section-title">Java Object-Oriented Design Hub</h2>
+                    <p class="section-subtitle">
+                        How core OOP principles are actively implemented across the Java backend architecture.
+                    </p>
+                </div>
+
+                <div class="oop-cards-grid">
+                    <div class="oop-card">
+                        <div class="oop-card-tag">PILLAR 1</div>
+                        <h3 class="oop-card-title">Encapsulation</h3>
+                        <p class="oop-card-desc">
+                            In <code class="code-pill">PasswordResult.java</code>, all data members (score, strengthLevel, entropyBits, requirements) are marked <code class="code-pill">private</code>.
+                            Access is strictly moderated through getters and validation-enforcing setters. Raw passwords are never exposed or retained in memory.
+                        </p>
+                        <div class="oop-code-snip">
+                            <code>private int score;<br>public int getScore() { return score; }</code>
+                        </div>
+                    </div>
+
+                    <div class="oop-card">
+                        <div class="oop-card-tag">PILLAR 2</div>
+                        <h3 class="oop-card-title">Abstraction</h3>
+                        <p class="oop-card-desc">
+                            The <code class="code-pill">PasswordRule</code> interface and <code class="code-pill">PasswordService</code> facade abstract away complex cryptographic Shannon entropy, character shuffling, and heuristic rules behind clean, intuitive method signatures.
+                        </p>
+                        <div class="oop-code-snip">
+                            <code>public interface PasswordRule {<br>&nbsp;&nbsp;boolean evaluate(String pwd);<br>}</code>
+                        </div>
+                    </div>
+
+                    <div class="oop-card">
+                        <div class="oop-card-tag">PILLAR 3</div>
+                        <h3 class="oop-card-title">Inheritance</h3>
+                        <p class="oop-card-desc">
+                            <code class="code-pill">AbstractPatternRule</code> defines reusable regex validation logic. Concrete classes <code class="code-pill">UppercaseRule</code>, <code class="code-pill">DigitRule</code>, and <code class="code-pill">SpecialCharRule</code> extend this base class, reducing redundant code.
+                        </p>
+                        <div class="oop-code-snip">
+                            <code>public class DigitRule extends AbstractPatternRule { ... }</code>
+                        </div>
+                    </div>
+
+                    <div class="oop-card">
+                        <div class="oop-card-tag">PILLAR 4</div>
+                        <h3 class="oop-card-title">Polymorphism</h3>
+                        <p class="oop-card-desc">
+                            <code class="code-pill">PasswordChecker</code> maintains a polymorphic <code class="code-pill">List&lt;PasswordRule&gt;</code>. During analysis, it dynamically evaluates each rule without knowing its specific subtype, demonstrating dynamic runtime method dispatch.
+                        </p>
+                        <div class="oop-code-snip">
+                            <code>for (PasswordRule rule : this.rules) {<br>&nbsp;&nbsp;rule.evaluate(password);<br>}</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Password Security Tips Section -->
+        <section id="tips-section" class="tips-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-kicker">CYBERSECURITY ADVICE</span>
+                    <h2 class="section-title">Essential Password Hygiene</h2>
+                    <p class="section-subtitle">Actionable guidelines to safeguard your personal identity and accounts.</p>
+                </div>
+
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <h3 class="tip-title">Length Beats Complexity</h3>
+                        <p class="tip-desc">
+                            A 16-character passphrase composed of random words is significantly harder to crack than an 8-character password full of symbols. Exponential entropy scales with length.
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <line x1="18" y1="8" x2="23" y2="13"/>
+                                <line x1="23" y1="8" x2="18" y2="13"/>
+                            </svg>
+                        </div>
+                        <h3 class="tip-title">Eliminate Personal Details</h3>
+                        <p class="tip-desc">
+                            Never use your birthdate, pet names, college ID, or phone number in passwords. Modern dictionary and OSINT brute-force tools prioritize these combinations.
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                        </div>
+                        <h3 class="tip-title">Never Reuse Passwords</h3>
+                        <p class="tip-desc">
+                            If one platform experiences a credential leak, credential stuffing attacks will immediately test your username and password against banking, email, and social networks.
+                        </p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <h3 class="tip-title">Use a Password Manager & 2FA</h3>
+                        <p class="tip-desc">
+                            Employ a reputable, audited password manager to store 16+ character unique passwords, and always enforce two-factor authentication (TOTP authenticator app or security key).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="nav-brand">
+                    <div class="brand-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <span class="brand-title">Secure<span class="brand-gradient">Pass</span></span>
+                </div>
+                <p class="footer-desc">
+                    Engineered for computer science & engineering students to master Java Object-Oriented Programming (OOP), web architecture, and cybersecurity principles.
+                </p>
+            </div>
+
+            <div class="footer-links-group">
+                <h4 class="footer-heading">Quick Navigation</h4>
+                <a href="#checker-section">Password Checker</a>
+                <a href="#generator-section">Password Generator</a>
+                <a href="#workflow-section">How It Works</a>
+                <a href="#oop-section">Java OOP Hub</a>
+            </div>
+
+            <div class="footer-privacy-note">
+                <div class="privacy-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Built with security and privacy in mind</span>
+                </div>
+                <p class="privacy-text">
+                    Passwords evaluated by this tool are never stored in a database or logged to disk. Evaluation is a heuristic measure of cryptographic entropy and complexity.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 SecurePass — Java OOP Mini-Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Notification Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
